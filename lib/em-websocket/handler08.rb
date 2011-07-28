@@ -5,6 +5,7 @@ module EventMachine
       include Framing07
       include MessageProcessor06
       include Close06
+      include Abort08
     end
   end
 end

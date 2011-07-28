@@ -28,6 +28,12 @@ module EventMachine
         process_data(data)
       end
 
+      # Used to abort the websocket connection before the opening handshake
+      # has completed. Some handlers extend this method
+      def abort
+        @connection.close_connection
+      end
+
       def close_websocket(code, body)
         # Implemented in subclass
       end

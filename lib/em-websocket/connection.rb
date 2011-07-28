@@ -143,13 +143,22 @@ module EventMachine
         close_connection
       end
 
+      def abort
+        debug [:aborting]
+        if @handler
+          @handler.abort
+        else
+          close_connection
+        end
+      end
+
       def close_websocket_private(code, body = nil)
         if @handler
           debug [:closing, code]
           @handler.close_websocket(code, body)
         else
           # The handshake hasn't completed - should be safe to terminate
-          abort
+          close_connection
         end
       end
     end
