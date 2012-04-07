@@ -29,7 +29,6 @@ module EventMachine
             # The connection is considered closed
             send_frame(:close, '')
             @state = :closed
-            @connection.close_connection_after_writing
           end
 
           @connection.trigger_on_close({
