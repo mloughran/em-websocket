@@ -21,8 +21,8 @@ module EventMachine
       def trigger_on_open
         @onopen.call if @onopen
       end
-      def trigger_on_close
-        @onclose.call if @onclose
+      def trigger_on_close(event = {})
+        @onclose.call(event) if @onclose
       end
       def trigger_on_ping(data)
         @onping.call(data) if @onping
